@@ -23,7 +23,7 @@ Professor
 
 # Video Demonstration
 
-Demo: [Link]https://youtu.be/4fhE1o6sM5c
+Demo: https://youtu.be/4fhE1o6sM5c
 
 # Photos
 
