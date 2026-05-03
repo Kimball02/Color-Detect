@@ -19,6 +19,8 @@ Professor
 
 <img width="642" height="391" alt="image" src="https://github.com/user-attachments/assets/88617c75-8bf4-4a2c-8a8f-4493aeb26d92" />
 
+<img width="1484" height="684" alt="image" src="https://github.com/user-attachments/assets/6b2edfa9-a39c-422a-9ea0-13ba914b3697" />
+
 # Results
 We successfully integrated the Pmod COLOR sensor with the Zybo Z7-10 FPGA to create a system capable of real-time color detection and visual feedback using the onboard RGB LED. This project reinforced core concepts in embedded systems and digital design, including hardware-software integration, I2C communication, and the use of memory-mapped peripherals such as AXI GPIO. By configuring and coordinating components within both the processing system and programmable logic, we gained practical experience in interfacing external hardware, debugging signal connections, and implementing a complete FPGA-based system.
 
