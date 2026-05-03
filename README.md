@@ -23,7 +23,7 @@ Professor
 
 # Video Demonstration
 
-Demo: [Color Detect Demonstration]https://youtu.be/4fhE1o6sM5c
+Demo: [Link]https://youtu.be/4fhE1o6sM5c
 
 # Photos
 
