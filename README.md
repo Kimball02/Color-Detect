@@ -21,11 +21,9 @@ Professor
 
 <img width="1484" height="684" alt="image" src="https://github.com/user-attachments/assets/6b2edfa9-a39c-422a-9ea0-13ba914b3697" />
 
-# Results
-We successfully integrated the Pmod COLOR sensor with the Zybo Z7-10 FPGA to create a system capable of real-time color detection and visual feedback using the onboard RGB LED. This project reinforced core concepts in embedded systems and digital design, including hardware-software integration, I2C communication, and the use of memory-mapped peripherals such as AXI GPIO. By configuring and coordinating components within both the processing system and programmable logic, we gained practical experience in interfacing external hardware, debugging signal connections, and implementing a complete FPGA-based system.
-
 # Video Demonstration
 
+https://youtu.be/4fhE1o6sM5c
 
 # Photos
 
@@ -55,6 +53,13 @@ We successfully integrated the Pmod COLOR sensor with the Zybo Z7-10 FPGA to cre
 
 # Background and Methodology
 The system was developed by configuring the Zynq Processing System in Vivado and enabling the I2C peripheral through EMIO to connect to the Pmod COLOR sensor. AXI GPIO modules were added to control both the sensor’s onboard LED and the Zybo’s RGB LED, with appropriate pin constraints defined in the XDC file. After generating the bitstream and exporting the hardware platform, Vitis was used to write C code that initialized the I2C interface, configured the sensor, and continuously read color data. The measured RGB values were compared in software to determine the dominant color, and the corresponding output was written to the AXI GPIO controlling the onboard RGB LED. The system was tested by placing colored objects in front of the sensor and observing the resulting LED behavior.
+
+# Results
+We successfully integrated the Pmod COLOR sensor with the Zybo Z7-10 FPGA to create a system capable of real-time color detection and visual feedback using the onboard RGB LED. This project reinforced core concepts in embedded systems and digital design, including hardware-software integration, I2C communication, and the use of memory-mapped peripherals such as AXI GPIO. By configuring and coordinating components within both the processing system and programmable logic, we gained practical experience in interfacing external hardware, debugging signal connections, and implementing a complete FPGA-based system.
+
+
+
+
 
 # Components Used
 | Microcontroller | Sensor | Wiring |
