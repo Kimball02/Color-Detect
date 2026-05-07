@@ -1,0 +1,203 @@
+#include <stdio.h>
+#include "platform.h"
+#include "xil_printf.h"
+#include "xparameters.h"
+#include "xiicps.h"
+#include "xil_io.h"
+#include "sleep.h"
+
+#define I2C_DEVICE_ID       XPAR_XIICPS_0_DEVICE_ID
+#define SENSOR_ADDR         0x29
+
+// axi_gpio_0 - PmodCOLOR LED enable
+#define AXI_GPIO_BASEADDR   0x41200000
+#define GPIO_DATA_OFFSET    0x0
+#define GPIO_TRI_OFFSET     0x4
+
+// axi_gpio_1 - RGB LED
+#define AXI_RGB_BASEADDR    0x41210000
+#define RGB_DATA_OFFSET     0x0
+#define RGB_TRI_OFFSET      0x4
+
+#define RGB_RED             0x4
+#define RGB_GREEN           0x2
+#define RGB_BLUE            0x1
+#define RGB_WHITE			0x7
+#define RGB_PURPLE			0x5
+#define RGB_YELLOW			0x6
+#define RGB_TEAL			0x3
+#define RGB_OFF             0x0
+
+XIicPs Iic;
+
+void gpio_led_init(void)
+{
+    Xil_Out32(AXI_GPIO_BASEADDR + GPIO_TRI_OFFSET, 0x0);
+}
+
+void gpio_led_on(void)
+{
+    Xil_Out32(AXI_GPIO_BASEADDR + GPIO_DATA_OFFSET, 0x1);
+}
+
+void gpio_led_off(void)
+{
+    Xil_Out32(AXI_GPIO_BASEADDR + GPIO_DATA_OFFSET, 0x0);
+}
+
+void rgb_init(void)
+{
+    Xil_Out32(AXI_RGB_BASEADDR + RGB_TRI_OFFSET, 0x0);
+    Xil_Out32(AXI_RGB_BASEADDR + RGB_DATA_OFFSET, RGB_OFF);
+}
+
+void rgb_set(u32 color)
+{
+    Xil_Out32(AXI_RGB_BASEADDR + RGB_DATA_OFFSET, color);
+}
+
+int i2c_init(void)
+{
+    XIicPs_Config *Config;
+    int Status;
+
+    Config = XIicPs_LookupConfig(I2C_DEVICE_ID);
+    if (Config == NULL)
+        return XST_FAILURE;
+
+    Status = XIicPs_CfgInitialize(&Iic, Config, Config->BaseAddress);
+    if (Status != XST_SUCCESS)
+        return XST_FAILURE;
+
+    Status = XIicPs_SelfTest(&Iic);
+    if (Status != XST_SUCCESS)
+        return XST_FAILURE;
+
+    XIicPs_SetSClk(&Iic, 100000);
+
+    return XST_SUCCESS;
+}
+
+int write_reg(u8 reg, u8 val)
+{
+    u8 buf[2];
+    int Status;
+
+    buf[0] = reg;
+    buf[1] = val;
+
+    Status = XIicPs_MasterSendPolled(&Iic, buf, 2, SENSOR_ADDR);
+    if (Status != XST_SUCCESS)
+        return Status;
+
+    while (XIicPs_BusIsBusy(&Iic));
+    return XST_SUCCESS;
+}
+
+int read_data(u8 reg, u8 *data, int len)
+{
+    int Status;
+
+    Status = XIicPs_MasterSendPolled(&Iic, &reg, 1, SENSOR_ADDR);
+    if (Status != XST_SUCCESS)
+        return Status;
+
+    while (XIicPs_BusIsBusy(&Iic));
+
+    Status = XIicPs_MasterRecvPolled(&Iic, data, len, SENSOR_ADDR);
+    if (Status != XST_SUCCESS)
+        return Status;
+
+    while (XIicPs_BusIsBusy(&Iic));
+    return XST_SUCCESS;
+}
+
+int main(void)
+{
+    u8 data[8];
+    u16 clear, red, green, blue;
+    int Status;
+    u8 test = 0x80;
+
+    xil_printf("Starting\r\n");
+
+    gpio_led_init();
+    gpio_led_on();
+    rgb_init();
+
+    Status = i2c_init();
+    if (Status != XST_SUCCESS) {
+        xil_printf("I2C init failed\r\n");
+        return 1;
+    }
+
+    Status = XIicPs_MasterSendPolled(&Iic, &test, 1, SENSOR_ADDR);
+    if (Status == XST_SUCCESS)
+        xil_printf("Device ACKed!\r\n");
+    else
+        xil_printf("No ACK from device\r\n");
+
+    Status = write_reg(0x80, 0x01);
+    if (Status != XST_SUCCESS) {
+        xil_printf("Write PON failed\r\n");
+        return 1;
+    }
+
+    usleep(3000);
+
+    Status = write_reg(0x80, 0x03);
+    if (Status != XST_SUCCESS) {
+        xil_printf("Write AEN failed\r\n");
+        return 1;
+    }
+
+    usleep(30000);
+    xil_printf("C=      R=      G=      B=      Detected:        ");
+
+    while (1) {
+        Status = read_data(0xB4, data, 8);
+        if (Status != XST_SUCCESS) {
+            xil_printf("Read failed\r\n");
+            continue;
+        }
+
+        clear = ((u16)data[1] << 8) | data[0];
+        red   = ((u16)data[3] << 8) | data[2];
+        green = ((u16)data[5] << 8) | data[4];
+        blue  = ((u16)data[7] << 8) | data[6];
+
+        xil_printf("C=%u R=%u G=%u B=%u\r\n", clear, red, green, blue);
+
+        char *detected = "UNKNOWN";
+
+        if (red < 2000 && green < 2000 && blue < 2000) {
+        	rgb_set(RGB_WHITE);
+        	xil_printf("Detected: NEUTRAL");
+    	} else if (red > 10000 && red > green && red > blue) {
+            rgb_set(RGB_RED);
+            xil_printf("Detected: RED");
+    	} else if (red > 10000 && blue > 10000 && red > green && blue > green) {
+    		rgb_set(RGB_PURPLE);
+    		xil_printf("Detected: PURPLE");
+        } else if (green > 10000 && green > red && green > blue) {
+            rgb_set(RGB_GREEN);
+            xil_printf("Detected: GREEN");
+        } else if (blue > 10000 && blue > red && blue > green) {
+            rgb_set(RGB_BLUE);
+            xil_printf("Detected: BLUE\r\n");
+        } else if (red > 10000 && green > 10000 && red > blue && green > blue) {
+            rgb_set(RGB_YELLOW);
+       		detected = "YELLOW";
+        } else if (blue > 10000 && green > 10000 && blue > red && green > red) {
+        	rgb_set(RGB_TEAL);
+        	detected = "TEAL";
+        } else {
+            rgb_set(RGB_WHITE);
+            detected = "UNKNOWN";
+        }
+
+        usleep(200000);
+    }
+
+    return 0;
+}

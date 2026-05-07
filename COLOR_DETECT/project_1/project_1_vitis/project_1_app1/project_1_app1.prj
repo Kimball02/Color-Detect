@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="project_1_app1" location="C:/Users/kc10b/Vivado/ECE520L/FinalProject/project_1/project_1_vitis/project_1_app1" platform="C:/Users/kc10b/Vivado/ECE520L/FinalProject/project_1/project_1_vitis/project_1_plat1/export/project_1_plat1/project_1_plat1.xpfm" platformUID="xilinx:zybo-z7-10::0.0(custom)" systemProject="project_1_app1_system" sysConfig="project_1_plat1" runtime="C/C++" cpu="standalone_domain" cpuInstance="ps7_cortexa9_0" os="standalone" mssSignature="0c97cd95cb3a76b3dfd3a1b2644023f8">
+  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.419173109">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.1299347972" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="hello_world"/>
+</sdkproject:SdkProject>

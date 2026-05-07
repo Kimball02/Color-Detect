@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<systemproject:SystemProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdsproject="http://www.xilinx.com/sdsproject" xmlns:systemproject="http://www.xilinx.com/systemproject" name="project_1_app1_system" platform="C:/Users/kc10b/Vivado/ECE520L/FinalProject/project_1/project_1_vitis/project_1_plat1/export/project_1_plat1/project_1_plat1.xpfm" platformUID="xilinx:zybo-z7-10::0.0(custom)" sysConfig="project_1_plat1" runtime="C/C++" rootFSLocation="" linuxImage="" sysroot="">
+  <configuration name="Debug" id="com.xilinx.sdx.system.managedbuilder.debugConfiguration.972069517">
+    <configBuildOptions xsi:type="systemproject:SystemOptions">
+      <applications name="project_1_app1" domainName="standalone_domain" domainPrettyName="standalone_domain" appBuildConfig="Debug"/>
+      <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
+    </configBuildOptions>
+  </configuration>
+  <configuration name="Release" id="com.xilinx.sdx.system.managedbuilder.releaseConfiguration.1332151086">
+    <configBuildOptions xsi:type="systemproject:SystemOptions">
+      <applications name="project_1_app1" domainName="standalone_domain" domainPrettyName="standalone_domain" appBuildConfig="Release"/>
+      <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
+    </configBuildOptions>
+  </configuration>
+</systemproject:SystemProject>

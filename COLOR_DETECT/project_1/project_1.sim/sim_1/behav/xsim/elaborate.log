@@ -1,0 +1,9 @@
+Vivado Simulator v2023.1.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2023.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_axi_color_led_display_behav xil_defaultlib.tb_axi_color_led_display xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+ERROR: [VRFC 10-2063] Module <axi_color_led_display_v1_0_S00_AXI> not found while processing module instance <dut> [C:/Users/trans/Desktop/project_1/project_1.srcs/sim_1/new/tb_axi_color_led_display.v:46]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.

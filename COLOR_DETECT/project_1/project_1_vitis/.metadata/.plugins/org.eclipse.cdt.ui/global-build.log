@@ -1,0 +1,24 @@
+Nothing to build in platform 'project_1_plat1'
+
+11:22:00 **** Incremental Build of configuration Debug for project project_1_app1 ****
+make all 
+C:/Xilinx/Vitis/2023.1/gnuwin/bin/make --no-print-directory pre-build
+a9-linaro-pre-build-step
+' '
+C:/Xilinx/Vitis/2023.1/gnuwin/bin/make --no-print-directory main-build
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/Users/kc10b/Vivado/ECE520L/FinalProject/project_1/project_1_vitis/project_1_plat1/export/project_1_plat1/sw/project_1_plat1/standalone_domain/bspinclude/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: project_1_app1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -LC:/Users/kc10b/Vivado/ECE520L/FinalProject/project_1/project_1_vitis/project_1_plat1/export/project_1_plat1/sw/project_1_plat1/standalone_domain/bsplib/lib -o "project_1_app1.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: project_1_app1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size project_1_app1.elf  |tee "project_1_app1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  29721	   1160	  22648	  53529	   d119	project_1_app1.elf
+'Finished building: project_1_app1.elf.size'
+' '
