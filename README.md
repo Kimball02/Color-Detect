@@ -28,31 +28,31 @@ Video Demo: https://youtube.com/shorts/crvmy_-K7lM
 
 ## BLUE
 
-<img width="3024" height="4032" alt="IMG_5176" src="https://github.com/user-attachments/assets/36378b7d-8916-4a0a-974e-cf9e3d64f832" />
+<img width="2024" height="3032" alt="IMG_5176" src="https://github.com/user-attachments/assets/36378b7d-8916-4a0a-974e-cf9e3d64f832" />
 
 
 ## GREEN
 
-<img width="3024" height="4032" alt="IMG_5175" src="https://github.com/user-attachments/assets/762cbf56-5ee5-4660-8d63-72bfa7920a58" />
+<img width="2024" height="3032" alt="IMG_5175" src="https://github.com/user-attachments/assets/762cbf56-5ee5-4660-8d63-72bfa7920a58" />
 
 
 ## RED
 
-<img width="3024" height="4032" alt="IMG_5174" src="https://github.com/user-attachments/assets/326046f6-aa3b-439d-bafe-97258955be7a" />
+<img width="2024" height="3032" alt="IMG_5174" src="https://github.com/user-attachments/assets/326046f6-aa3b-439d-bafe-97258955be7a" />
 
 ## PURPLE
 
-<img width="3024" height="4032" alt="IMG_5085 (1)" src="https://github.com/user-attachments/assets/da64b505-0424-4670-85e2-352e62a4d4c2" />
+<img width="2024" height="3032" alt="IMG_5085 (1)" src="https://github.com/user-attachments/assets/da64b505-0424-4670-85e2-352e62a4d4c2" />
 
 
 ## YELLOW
 
-<img width="3024" height="4032" alt="IMG_5178" src="https://github.com/user-attachments/assets/73022556-0194-48ca-9df8-9f5e8753c11c" />
+<img width="2024" height="3032" alt="IMG_5178" src="https://github.com/user-attachments/assets/73022556-0194-48ca-9df8-9f5e8753c11c" />
 
 
 ## TEAL
 
-<img width="2197" height="3489" alt="IMG_5181" src="https://github.com/user-attachments/assets/854910c7-35f0-40ea-80fb-181f9593a17f" />
+<img width="2024" height="3032" alt="IMG_5181" src="https://github.com/user-attachments/assets/854910c7-35f0-40ea-80fb-181f9593a17f" />
 
 
 # Background and Methodology
