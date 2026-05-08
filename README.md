@@ -17,7 +17,8 @@ Professor
   
 # Block Diagram
 
-<img width="961" height="575" alt="Screenshot 2026-05-08 024305" src="https://github.com/user-attachments/assets/1e979ed8-f998-4280-a680-83e269182938" />
+<img width="961" height="575" alt="Screenshot 2026-05-08 024305" src="https://github.com/user-attachments/assets/e596487a-9d54-4517-93b7-88ae04783db9" />
+
 
 # Video Demonstration
 
